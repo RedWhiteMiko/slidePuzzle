@@ -85,6 +85,7 @@ func _fail_and_quit(msg: String):
 	get_tree().quit()
 
 func set_as_solved() -> void:
+	print("emit puzzle_solved")
 	emit_signal("puzzle_solved", puzzle_name)
 
 func _get_pieces_from_pieces_node():
@@ -123,10 +124,10 @@ func _get_goals_for_piece(piece):
 		return piece.get_parent().get_parent().get_parent().get_node("Goals").get_children()
 	_fail_and_quit("Piece "+piece.name+" has no goals")
 
-func _tile(piece: Sprite) -> Vector2:
+func _tile(piece) -> Vector2:
 	return piece.get_meta("current_tile")
 
-func _tile_set(piece: Sprite, tile: Vector2) -> void:
+func _tile_set(piece, tile: Vector2) -> void:
 	piece.set_meta("current_tile", tile)
 	
 func _is_carrier(piece: Sprite) -> bool:
@@ -228,6 +229,7 @@ func _test_if_destination_is_allowed(piece: Sprite, new_tile: Vector2) -> bool:
 		if has_node("CarriersPath"):
 			piece_path = $CarriersPath
 	else:
+		# print("p", piece.get_parent(), piece.get_parent().get_parent(), piece.get_parent().get_parent().has_node("Path"))
 		if piece.get_parent().get_parent().has_node("Path"):
 			piece_path = piece.get_parent().get_parent().get_node("Path")
 
@@ -311,10 +313,12 @@ func _on_button_down(mouse_pos: Vector2) -> void:
 			closest_piece_distance = click_pos.distance_squared_to(piece_tile)
 	if closest_piece_distance < 2:
 		dragging = closest_piece
+		# _gravity(closest_piece)
 		emit_signal("clicked_piece", dragging, _tile(dragging))
 
 func _on_button_release() -> void:
 	if dragging:
+		_gravity(dragging)
 		emit_signal("piece_released", dragging, _tile(dragging))
 	dragging = null
 
@@ -332,7 +336,31 @@ func _find_main_piece(piece: Sprite):
 	if piece.get_parent().name == "Pieces" or _is_carriers_node(piece.get_parent()):
 		return piece
 	return piece.get_parent()
+	
+func _is_gravity_down(piece, below_tile):
+	var piece_path: TileMap = null
+	if piece.get_parent().get_parent().has_node("Path"):
+		piece_path = piece.get_parent().get_parent().get_node("Path")
 
+	return _dont_allow_move(piece, piece_path, below_tile)
+	
+func _gravity(piece):
+	var count = 1;
+	var below_tile: Vector2 = pos_to_tile_index(Vector2(piece.position.x, piece.position.y + count * cell_size.y))
+	var on_land = _is_gravity_down(piece, below_tile)
+	var prev_tile;
+	while not on_land:
+		count += 1
+		prev_tile = below_tile
+		below_tile = pos_to_tile_index(Vector2(piece.position.x, piece.position.y + cell_size.y * count))
+		on_land = _is_gravity_down(piece, below_tile)
+	if prev_tile:
+		move_piece_to(piece, prev_tile)
+	
+	#var p = piece_path.get_cell(below_tile.x, below_tile.y)
+	#while(below_tile):
+	#	move_piece_to(piece, below_tile)
+	
 func _on_drag(mouse_pos):
 	if dragging == null:
 		return

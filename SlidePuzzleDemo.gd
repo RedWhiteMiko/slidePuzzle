@@ -1,10 +1,11 @@
 extends Node2D
 
 var can_move: bool = true
-const slide_count = 8
+const slide_count = 10
 const slide_size = 1024
 
 func _on_puzzle_solved(puzzle_name: String) -> void:
+	print("_on_puzzle_solved visible")
 	$CanvasLayer/PuzzleSolved.visible = true
 	$CanvasLayer/PuzzleSolved/Player.play("Solved")
 
@@ -33,12 +34,12 @@ func _on_SlidePuzzle_clicked_tile(pos):
 
 
 func _on_SlidePuzzle_piece_entered_goal(piece, goal, tile):
-	#print("On Goal: Piece "+piece.name+" on goal "+goal.name+" at "+str(tile))
+	print("On Goal: Piece "+piece.name+" on goal "+goal.name+" at "+str(tile))
 	pass
 
 
 func _on_SlidePuzzle_clicked_piece(piece, tile):
-	#print("Clicked: Piece "+piece.name+" at "+str(tile))
+	print("Clicked: Piece "+piece.name+" at "+str(tile))
 	pass
 
 
@@ -47,9 +48,26 @@ func _on_SlidePuzzle_piece_moved(piece, tile_from, tile_to):
 
 
 func _on_SlidePuzzle_piece_released(piece, tile):
-	#print("Released: Piece "+piece.name+" at "+str(tile))
+	print("Released: Piece "+piece.name+" at "+str(tile))
 	pass
 
 
 func _on_Tween_tween_all_completed():
 	can_move = true
+
+
+func _on_SlidePuzzle_puzzle_solved():
+	print("Puzzle solved")
+	_on_puzzle_solved("")
+	pass # Replace with function body.
+
+
+func _on_SlidePuzzle_on_piece_ready():
+	pass # Replace with function body.
+
+
+func _on_SlidePuzzleDemo_ready():
+	var new_x_position = $Background.position.x + slide_size * (slide_count - 1)
+	$CanvasLayer/previousSlide.visible = new_x_position != 0
+	$CanvasLayer/nextSlide.visible = new_x_position < slide_size * (slide_count-1)
+	$Background.move(new_x_position)

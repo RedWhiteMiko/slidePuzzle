@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://addons/slidePuzzle/slidePuzzleTileMap.gd" type="Script" id=1]
 [ext_resource path="res://assets/SlidePuzzleTileset.tres" type="TileSet" id=2]
@@ -25,6 +25,36 @@
 [ext_resource path="res://assets/bluePieceJoinedRight.png" type="Texture" id=23]
 [ext_resource path="res://assets/bluePieceJoinedLeft.png" type="Texture" id=24]
 [ext_resource path="res://assets/childSpritesExample.png" type="Texture" id=25]
+[ext_resource path="res://assets/teio/frame_27_delay-0.04s.png" type="Texture" id=26]
+[ext_resource path="res://assets/teio/frame_26_delay-0.04s.png" type="Texture" id=27]
+[ext_resource path="res://assets/teio/frame_28_delay-0.04s.png" type="Texture" id=28]
+[ext_resource path="res://assets/teio/frame_17_delay-0.04s.png" type="Texture" id=29]
+[ext_resource path="res://assets/teio/frame_24_delay-0.04s.png" type="Texture" id=30]
+[ext_resource path="res://assets/teio/frame_25_delay-0.04s.png" type="Texture" id=31]
+[ext_resource path="res://assets/teio/frame_16_delay-0.04s.png" type="Texture" id=32]
+[ext_resource path="res://assets/teio/frame_01_delay-0.04s.png" type="Texture" id=33]
+[ext_resource path="res://assets/teio/frame_02_delay-0.04s.png" type="Texture" id=34]
+[ext_resource path="res://assets/teio/frame_04_delay-0.04s.png" type="Texture" id=35]
+[ext_resource path="res://assets/teio/frame_03_delay-0.08s.png" type="Texture" id=36]
+[ext_resource path="res://assets/teio/frame_20_delay-0.04s.png" type="Texture" id=37]
+[ext_resource path="res://assets/teio/frame_21_delay-0.04s.png" type="Texture" id=38]
+[ext_resource path="res://assets/teio/frame_23_delay-0.04s.png" type="Texture" id=39]
+[ext_resource path="res://assets/teio/frame_12_delay-0.04s.png" type="Texture" id=40]
+[ext_resource path="res://assets/teio/frame_22_delay-0.08s.png" type="Texture" id=41]
+[ext_resource path="res://assets/teio/frame_18_delay-0.04s.png" type="Texture" id=42]
+[ext_resource path="res://assets/teio/frame_19_delay-0.08s.png" type="Texture" id=43]
+[ext_resource path="res://assets/teio/frame_11_delay-0.04s.png" type="Texture" id=44]
+[ext_resource path="res://assets/teio/frame_09_delay-0.08s.png" type="Texture" id=45]
+[ext_resource path="res://assets/teio/frame_10_delay-0.04s.png" type="Texture" id=46]
+[ext_resource path="res://assets/teio/frame_13_delay-0.04s.png" type="Texture" id=47]
+[ext_resource path="res://assets/teio/frame_00_delay-0.04s.png" type="Texture" id=48]
+[ext_resource path="res://assets/teio/frame_08_delay-0.04s.png" type="Texture" id=49]
+[ext_resource path="res://assets/teio/frame_15_delay-0.04s.png" type="Texture" id=50]
+[ext_resource path="res://assets/teio/frame_07_delay-0.04s.png" type="Texture" id=51]
+[ext_resource path="res://assets/teio/frame_14_delay-0.08s.png" type="Texture" id=52]
+[ext_resource path="res://assets/teio/frame_05_delay-0.04s.png" type="Texture" id=53]
+[ext_resource path="res://assets/teio/frame_06_delay-0.04s.png" type="Texture" id=54]
+[ext_resource path="res://assets/Uku2KxuD.jpg" type="Texture" id=55]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -73,6 +103,14 @@ size = 24
 outline_size = 1
 font_data = ExtResource( 6 )
 
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 48 ), ExtResource( 33 ), ExtResource( 34 ), ExtResource( 36 ), ExtResource( 35 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 51 ), ExtResource( 49 ), ExtResource( 45 ), ExtResource( 46 ), ExtResource( 44 ), ExtResource( 40 ), ExtResource( 47 ), ExtResource( 52 ), ExtResource( 50 ), ExtResource( 32 ), ExtResource( 29 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 41 ), ExtResource( 39 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "default",
+"speed": 23.0
+} ]
+
 [node name="SlidePuzzleDemo" type="Node2D"]
 script = ExtResource( 5 )
 
@@ -89,7 +127,6 @@ __meta__ = {
 }
 
 [node name="previousSlide" type="TextureButton" parent="CanvasLayer"]
-visible = false
 margin_left = 15.4756
 margin_top = 559.285
 margin_right = 47.4756
@@ -123,6 +160,7 @@ __meta__ = {
 anims/Solved = SubResource( 2 )
 
 [node name="Background" type="Sprite" parent="."]
+visible = false
 centered = false
 script = ExtResource( 9 )
 
@@ -604,13 +642,13 @@ centered = false
 
 [node name="Goals" type="Node" parent="Slide7/SlidePuzzle/Pieces/Blue"]
 
-[node name="BlueGoal" type="Sprite" parent="Slide7/SlidePuzzle/Pieces/Blue/Goals"]
-position = Vector2( 6784, 384 )
+[node name="BlueGoal2" type="Sprite" parent="Slide7/SlidePuzzle/Pieces/Blue/Goals"]
+position = Vector2( 6720, 384 )
 texture = ExtResource( 4 )
 centered = false
 
-[node name="BlueGoal2" type="Sprite" parent="Slide7/SlidePuzzle/Pieces/Blue/Goals"]
-position = Vector2( 6720, 384 )
+[node name="BlueGoal3" type="Sprite" parent="Slide7/SlidePuzzle/Pieces/Blue/Goals"]
+position = Vector2( 6720, 320 )
 texture = ExtResource( 4 )
 centered = false
 
@@ -702,6 +740,95 @@ centered = false
 [node name="Sprite" type="Sprite" parent="Slide8"]
 position = Vector2( 7936, 320 )
 texture = ExtResource( 25 )
+
+[node name="Slide9" type="Node" parent="."]
+
+[node name="SlidePuzzle" type="TileMap" parent="Slide9"]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 131207, 0, 0, 196743, 0, 0, 262279, 0, 0, 327815, 0, 0, 393346, 0, 0, 393347, 0, 0, 393348, 0, 0, 393349, 0, 0, 393350, 0, 0, 393351, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Pieces" type="Node" parent="Slide9/SlidePuzzle"]
+
+[node name="Blue" type="Node" parent="Slide9/SlidePuzzle/Pieces"]
+
+[node name="Pieces" type="Node" parent="Slide9/SlidePuzzle/Pieces/Blue"]
+
+[node name="BluePiece1" type="Sprite" parent="Slide9/SlidePuzzle/Pieces/Blue/Pieces" groups=[
+"sp_blue",
+"sp_piece",
+]]
+position = Vector2( 8320, 384 )
+scale = Vector2( 0.156, 0.156 )
+z_index = 1
+texture = ExtResource( 55 )
+centered = false
+
+[node name="Goals" type="Node" parent="Slide9/SlidePuzzle/Pieces/Blue"]
+
+[node name="BlueGoal" type="Sprite" parent="Slide9/SlidePuzzle/Pieces/Blue/Goals" groups=[
+"spclass_blue",
+"sptype_goal",
+]]
+position = Vector2( 8640, 128 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Node" type="Node" parent="Slide9/SlidePuzzle"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Slide9/SlidePuzzle/Node"]
+position = Vector2( 8401.72, 206.259 )
+scale = Vector2( 0.406206, 0.406206 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+
+[node name="Label" type="Label" parent="Slide9/SlidePuzzle/Node"]
+margin_left = 8494.93
+margin_top = 168.523
+margin_right = 8626.93
+margin_bottom = 219.523
+text = "Some random teio
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slide10" type="Node" parent="."]
+
+[node name="SlidePuzzle" type="TileMap" parent="Slide10"]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 65680, 0, 0, 65681, 0, 0, 65682, 0, 0, 65683, 0, 0, 65684, 0, 0, 65685, 0, 0, 65686, 0, 0, 65687, 0, 0, 65688, 0, 0, 65689, 0, 0, 65690, 0, 0, 65691, 0, 0, 65692, 0, 0, 65693, 0, 0, 65694, 0, 0, 65695, 0, 0, 131216, 0, 0, 131217, 0, 0, 131218, 0, 0, 131219, 0, 0, 131220, 0, 0, 131221, 0, 0, 131222, 0, 0, 131223, 0, 0, 131224, 0, 0, 131225, 0, 0, 131226, 0, 0, 131227, 0, 0, 131228, 0, 0, 131229, 0, 0, 131230, 0, 0, 131231, 0, 0, 196752, 0, 0, 196753, 0, 0, 196754, 0, 0, 196755, 0, 0, 196756, 0, 0, 196757, 0, 0, 196758, 0, 0, 196759, 0, 0, 196760, 0, 0, 196761, 0, 0, 196762, 0, 0, 196763, 0, 0, 196764, 0, 0, 196765, 0, 0, 196766, 0, 0, 196767, 0, 0, 262288, 0, 0, 262289, 0, 0, 262290, 0, 0, 262291, 0, 0, 262292, 0, 0, 262293, 0, 0, 262294, 0, 0, 262295, 0, 0, 262296, 0, 0, 262297, 0, 0, 262298, 0, 0, 262299, 0, 0, 262300, 0, 0, 262301, 0, 0, 262302, 0, 0, 262303, 0, 0, 327824, 0, 0, 327825, 0, 0, 327826, 0, 0, 327827, 0, 0, 327828, 0, 0, 327829, 0, 0, 327830, 0, 0, 327831, 0, 0, 327832, 0, 0, 327833, 0, 0, 327834, 0, 0, 327835, 0, 0, 327836, 0, 0, 327837, 0, 0, 327838, 0, 0, 327839, 0, 0, 393360, 0, 0, 393361, 0, 0, 393362, 0, 0, 393363, 0, 0, 393364, 0, 0, 393365, 0, 0, 393366, 0, 0, 393367, 0, 0, 393368, 0, 0, 393369, 0, 0, 393370, 0, 0, 393371, 0, 0, 393372, 0, 0, 393373, 0, 0, 393374, 0, 0, 393375, 0, 0, 458896, 0, 0, 458897, 0, 0, 458898, 0, 0, 458899, 0, 0, 458900, 0, 0, 458904, 0, 0, 458906, 0, 0, 458908, 0, 0, 458909, 0, 0, 458910, 0, 0, 458911, 0, 0, 524432, 0, 0, 524433, 0, 0, 524435, 0, 0, 524436, 0, 0, 524437, 0, 0, 524439, 0, 0, 524440, 0, 0, 524442, 0, 0, 524444, 0, 0, 524445, 0, 0, 524446, 0, 0, 524447, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="Pieces" type="Node" parent="Slide10/SlidePuzzle"]
+
+[node name="Blue" type="Node" parent="Slide10/SlidePuzzle/Pieces"]
+
+[node name="Pieces" type="Node" parent="Slide10/SlidePuzzle/Pieces/Blue"]
+
+[node name="BluePiece1" type="Sprite" parent="Slide10/SlidePuzzle/Pieces/Blue/Pieces" groups=[
+"sp_blue",
+"sp_piece",
+]]
+position = Vector2( 9216, 64 )
+z_index = 1
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Goals" type="Node" parent="Slide10/SlidePuzzle/Pieces/Blue"]
+
+[node name="BlueGoal" type="Sprite" parent="Slide10/SlidePuzzle/Pieces/Blue/Goals" groups=[
+"spclass_blue",
+"sptype_goal",
+]]
+position = Vector2( 10176.9, 512 )
+texture = ExtResource( 4 )
+centered = false
+
+[connection signal="ready" from="." to="." method="_on_SlidePuzzleDemo_ready"]
 [connection signal="button_down" from="CanvasLayer/nextSlide" to="." method="_on_nextSlide_button_down"]
 [connection signal="button_down" from="CanvasLayer/previousSlide" to="." method="_on_previousSlide_button_down"]
 [connection signal="tween_all_completed" from="Background/Tween" to="." method="_on_Tween_tween_all_completed"]
@@ -724,3 +851,5 @@ texture = ExtResource( 25 )
 [connection signal="piece_moved" from="Slide8/SlidePuzzle" to="." method="_on_SlidePuzzle_piece_moved"]
 [connection signal="piece_released" from="Slide8/SlidePuzzle" to="." method="_on_SlidePuzzle_piece_released"]
 [connection signal="puzzle_solved" from="Slide8/SlidePuzzle" to="." method="_on_puzzle_solved"]
+[connection signal="puzzle_solved" from="Slide9/SlidePuzzle" to="." method="_on_puzzle_solved"]
+[connection signal="puzzle_solved" from="Slide10/SlidePuzzle" to="." method="_on_puzzle_solved"]
